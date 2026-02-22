@@ -23,8 +23,12 @@ jobs:
 
       - name: Build APK with Buildozer
         run: |
-          yes | buildozer -v android debug
-        continue-on-error: false
+          buildozer -v android debug
+        env:
+          # Esta linha abaixo é o que realmente aceita as licenças sem travar
+          APP_ANDROID_ACCEPT_SDK_LICENSE: "1"
+          # Adicionando log de nível 2 para vermos tudo se der erro
+          BUILDOZER_LOG_LEVEL: "2"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
