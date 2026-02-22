@@ -6,8 +6,9 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,db
 version = 0.1
 
-# Requisitos: Adicionei o sdl2_ttf que é essencial para renderizar textos no Android
-requirements = python3,kivy==2.3.0,kivymd==1.2.0,pillow,openssl,sdl2_ttf==2.0.15
+# Ajuste nos requisitos: Adicionei o sqlite3 e retirei a versão fixa do sdl2_ttf
+# para deixar o Buildozer escolher a melhor para o Android 13/14
+requirements = python3,kivy==2.3.0,kivymd==1.2.0,pillow,openssl,sqlite3,sdl2_ttf
 
 orientation = portrait
 osx.python_version = 3
@@ -19,12 +20,12 @@ android.permissions = INTERNET, WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE
 android.api = 33
 android.minapi = 21
 
-# Configurações de ferramentas
-android.sdk = 33
-android.ndk = 25b
+# MODO PILOTO AUTOMÁTICO:
+# Removemos as versões fixas de SDK e NDK para o servidor não conflitar
 android.accept_sdk_license = True
+android.skip_update = False
 
-# Deixe o Buildozer gerenciar os caminhos internamente agora para evitar erro de 'not found'
+# Arquiteturas modernas
 android.archs = arm64-v8a, armeabi-v7a
 android.allow_backup = True
 
