@@ -5,8 +5,7 @@ package.domain = org.vrs
 source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,db
 version = 0.1
-requirements = python3,kivy==2.3.0,kivymd==1.2.0,pillow,sdl2_ttf==2.0.15
-
+requirements = python3,kivy==2.3.0,kivymd==1.2.0,pillow
 orientation = portrait
 osx.python_version = 3
 osx.kivy_version = 2.3.0
