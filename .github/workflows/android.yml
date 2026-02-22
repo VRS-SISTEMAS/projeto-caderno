@@ -25,11 +25,13 @@ jobs:
         run: |
           # Adicionando as ferramentas ao PATH para o sistema achar o sdkmanager
           export PATH=$PATH:/usr/local/lib/android/sdk/tools/bin:/usr/local/lib/android/sdk/platform-tools:/usr/local/lib/android/sdk/cmdline-tools/latest/bin
+          # O comando 'clean' garante que o erro de NDK antigo não volte
+          buildozer android clean
           buildozer -v android debug
         env:
           APP_ANDROID_ACCEPT_SDK_LICENSE: "1"
           ANDROID_SDK_ROOT: "/usr/local/lib/android/sdk"
-          ANDROID_NDK_ROOT: "/usr/local/lib/android/sdk/ndk/25.2.9519653"
+          ANDROID_NDK_HOME: "/usr/local/lib/android/sdk/ndk/27.3.13750724"
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
