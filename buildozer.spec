@@ -6,8 +6,8 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,db
 version = 0.1
 
-# Requisitos ajustados: sqlite3 já vem no python3, mas o openssl é vital para conexões
-requirements = python3,kivy==2.3.0,kivymd==1.2.0,pillow,openssl
+# Requisitos: Adicionei o sdl2_ttf que é essencial para renderizar textos no Android
+requirements = python3,kivy==2.3.0,kivymd==1.2.0,pillow,openssl,sdl2_ttf==2.0.15
 
 orientation = portrait
 osx.python_version = 3
@@ -16,18 +16,15 @@ fullscreen = 0
 
 # Permissões e APIs
 android.permissions = INTERNET, WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE
-android.api = 34
+android.api = 33
 android.minapi = 21
 
-# Configurações de ferramentas (Ajustadas para o servidor do GitHub)
-android.sdk = 34
+# Configurações de ferramentas
+android.sdk = 33
 android.ndk = 25b
 android.accept_sdk_license = True
 
-# Caminhos diretos: Esses endereços garantem que ele ache as ferramentas de primeira
-android.sdk_path = /usr/local/lib/android/sdk
-android.ndk_path = /usr/local/lib/android/sdk/ndk/25.2.9519653
-
+# Deixe o Buildozer gerenciar os caminhos internamente agora para evitar erro de 'not found'
 android.archs = arm64-v8a, armeabi-v7a
 android.allow_backup = True
 
