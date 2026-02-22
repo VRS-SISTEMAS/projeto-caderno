@@ -1,3 +1,4 @@
+# Forçando atualização do script de build v2
 name: Build APK
 on: [push]
 jobs:
