@@ -6,13 +6,10 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,db
 version = 0.1
 
-# Ajuste nos requisitos: Adicionei o sqlite3 e retirei a versão fixa do sdl2_ttf
-# para deixar o Buildozer escolher a melhor para o Android 13/14
-requirements = python3,kivy==2.3.0,kivymd==1.2.0,pillow,openssl,sqlite3,sdl2_ttf
+# Requirements: Simplificados para o Buildozer baixar as versões mais compatíveis
+requirements = python3,kivy==2.3.0,kivymd==1.2.0,pillow,openssl,sqlite3
 
 orientation = portrait
-osx.python_version = 3
-osx.kivy_version = 2.3.0
 fullscreen = 0
 
 # Permissões e APIs
@@ -20,10 +17,12 @@ android.permissions = INTERNET, WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE
 android.api = 33
 android.minapi = 21
 
-# MODO PILOTO AUTOMÁTICO:
-# Removemos as versões fixas de SDK e NDK para o servidor não conflitar
+# --- MODO REPARO AUTOMÁTICO ---
+# Removi as linhas que forçavam o NDK antigo. 
+# Isso obriga o Buildozer a baixar o NDK correto para o servidor atual.
 android.accept_sdk_license = True
 android.skip_update = False
+android.copy_libs = 1
 
 # Arquiteturas modernas
 android.archs = arm64-v8a, armeabi-v7a
