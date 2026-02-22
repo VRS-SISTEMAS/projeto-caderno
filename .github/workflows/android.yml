@@ -14,24 +14,19 @@ jobs:
       - name: Install System Dependencies
         run: |
           sudo apt update
-          sudo apt install -y build-essential git python3-dev ffmpeg libsdl2-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev zlib1g-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libtinfo6 libncurses6 autoconf libtool pkg-config
+          sudo apt install -y build-essential git python3-dev ffmpeg libsdl2-dev libportmidi-dev libswscale-dev libavformat-dev libavcodec-dev zlib1g-dev libgstreamer1.0-dev libgstreamer-plugins-base1.0-dev libtinfo6 libncurses6 autoconf libtool pkg-config cmake
 
       - name: Install Buildozer and Cython
         run: |
           pip install --upgrade pip
           pip install buildozer cython==0.29.33 virtualenv
 
-      - name: Build APK with Buildozer
+      - name: Build APK
         run: |
+          # Limpando erros de pastas não encontradas
+          buildozer android clean
           buildozer -v android debug
         env:
-          # Esta linha abaixo é o que realmente aceita as licenças sem travar
           APP_ANDROID_ACCEPT_SDK_LICENSE: "1"
-          # Adicionando log de nível 2 para vermos tudo se der erro
-          BUILDOZER_LOG_LEVEL: "2"
-
-      - name: Upload APK
-        uses: actions/upload-artifact@v4
-        with:
-          name: package
-          path: bin/*.apk
+          ANDROID_SDK_ROOT: "/usr/local/lib/android/sdk"
+          ANDROID_NDK_HOME: "/usr/local/lib/android/sdk/ndk/27.3.13750724"
