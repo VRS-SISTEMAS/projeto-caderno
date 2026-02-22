@@ -15,7 +15,7 @@ android.permissions = INTERNET, WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE
 android.api = 31
 android.minapi = 21
 android.sdk = 33
-android.ndk = 25b
+android.ndk = 27.0.12077973
 android.archs = arm64-v8a, armeabi-v7a
 android.allow_backup = True
 
