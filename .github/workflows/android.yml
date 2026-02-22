@@ -1,19 +1,16 @@
-name: Build APK
+name: Build
 on: [push]
-
 jobs:
-  build:
+  android:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-
-      - name: Build APK with Buildozer
+      - name: Build
         uses: ArtemSashko/buildozer-action@v1.6.1
         with:
           workdir: .
           buildozer_version: stable
-
-      - name: Upload Artifact
+      - name: Upload
         uses: actions/upload-artifact@v3
         with:
           name: package
