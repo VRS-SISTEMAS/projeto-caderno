@@ -6,21 +6,17 @@ source.dir = .
 source.include_exts = py,png,jpg,kv,atlas,db
 version = 0.1
 
-# Requirements estáveis
-requirements = python3,kivy==2.3.0,kivymd==1.2.0,pillow,openssl,sqlite3
+# Adicionado jnius para a trava de hardware funcionar
+requirements = python3,kivy==2.3.0,kivymd==1.2.0,pillow,sqlite3,pyjnius
 
 orientation = portrait
 fullscreen = 0
 
-# Use a API 33, que é a mais compatível com o NDK 25b que o Buildozer prefere
-android.api = 33
+android.api = 34
 android.minapi = 21
-android.ndk = 25b
+android.ndk = 27c
 android.accept_sdk_license = True
-
-# NÃO coloque caminhos manuais aqui desta vez
 android.archs = arm64-v8a, armeabi-v7a
-android.allow_backup = True
 
 [buildozer]
 log_level = 2
