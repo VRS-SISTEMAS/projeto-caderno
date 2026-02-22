@@ -23,10 +23,10 @@ jobs:
 
       - name: Build APK
         run: |
-          # Adicionando as ferramentas ao PATH para o sistema achar o sdkmanager
+          # Adicionando ferramentas ao PATH
           export PATH=$PATH:/usr/local/lib/android/sdk/tools/bin:/usr/local/lib/android/sdk/platform-tools:/usr/local/lib/android/sdk/cmdline-tools/latest/bin
-          # O comando 'clean' garante que o erro de NDK antigo não volte
-          buildozer android clean
+          # Removendo a pasta de build antiga manualmente para garantir limpeza total
+          rm -rf .buildozer/android/platform/build-*
           buildozer -v android debug
         env:
           APP_ANDROID_ACCEPT_SDK_LICENSE: "1"
